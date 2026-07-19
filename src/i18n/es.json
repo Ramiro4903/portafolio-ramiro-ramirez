@@ -1,0 +1,150 @@
+{
+  "nav": {
+    "links": [
+      { "id": "projects", "label": "Proyectos" },
+      { "id": "about", "label": "Sobre mí" },
+      { "id": "skills", "label": "Habilidades" },
+      { "id": "journey", "label": "Trayectoria" },
+      { "id": "contact", "label": "Contacto" }
+    ],
+    "skipLink": "Saltar al contenido",
+    "openMenu": "Abrir menú",
+    "closeMenu": "Cerrar menú",
+    "langToggle": "Cambiar idioma a inglés"
+  },
+  "hero": {
+    "kicker": "... /portafolio ...",
+    "titleA": "Full-Stack",
+    "titleB": "Developer",
+    "intro": "Estudiante de Ingeniería en Computación construyendo aplicaciones web completas: del esquema de la base de datos al último pixel.",
+    "status": "Abierto a oportunidades y colaboraciones",
+    "cta": "Ver proyectos"
+  },
+  "projects": {
+    "label": "... /proyectos ...",
+    "title": "Proyectos destacados",
+    "subtitle": "Aplicaciones reales, diseñadas, construidas y desplegadas de inicio a fin.",
+    "labels": {
+      "objective": "Objetivo",
+      "challenge": "Reto",
+      "solution": "Solución",
+      "results": "Resultados",
+      "stack": "Stack"
+    },
+    "demo": "Ver demo",
+    "code": "Ver código",
+    "live": "En producción",
+    "items": {
+      "pinatastore": {
+        "name": "PiñataStore",
+        "type": "Plataforma e-commerce",
+        "description": "Solución completa de comercio electrónico inspirada en un negocio local: catálogo de productos, carrito de compras y flujo de pago, junto con un panel administrativo para operar la tienda.",
+        "objective": "Digitalizar la operación completa de una tienda real: ventas, inventario y administración en una sola plataforma.",
+        "challenge": "Modelar sobre una base de datos relacional un flujo de compra real —inventario, promociones, pedidos, empleados y clientes— y procesar pagos en línea de forma segura.",
+        "solution": "Base de datos MySQL normalizada para inventario, pagos, usuarios y pedidos; panel administrativo para gestionar productos, promociones, empleados, clientes y pedidos; e integración de pago en línea.",
+        "results": [
+          "Aplicación desplegada en un entorno público",
+          "Catálogo, carrito y checkout completos",
+          "Administración integral de la tienda desde el panel"
+        ]
+      },
+      "manuelmisael": {
+        "name": "Manuel Misael Fotografía",
+        "type": "Sitio para fotógrafo profesional",
+        "description": "Sitio profesional para un fotógrafo: servicios, portafolio fotográfico e información de reservaciones, con una experiencia bilingüe y galerías interactivas.",
+        "objective": "Dar presencia digital al fotógrafo y convertir visitas en solicitudes de reservación.",
+        "challenge": "Mostrar galerías con gran cantidad de imágenes sin sacrificar rendimiento, atender a una audiencia bilingüe y hacer claro el flujo de reservas.",
+        "solution": "Aplicación React responsiva con cambio dinámico de idioma, galerías interactivas con animaciones y una sección de reservaciones (KINNETA) con formularios conectados a APIs.",
+        "results": [
+          "En producción con mantenimiento activo",
+          "Los clientes consultan paquetes y reservan desde el sitio",
+          "Optimizada para móvil y escritorio"
+        ]
+      }
+    }
+  },
+  "about": {
+    "label": "... /sobre-mi ...",
+    "greetingStart": "¡Hola! Soy Ramiro, ",
+    "greetingHighlight": "desarrollador full-stack",
+    "greetingEnd": " en formación.",
+    "paragraphs": [
+      "Estudio Ingeniería en Computación en la Universidad de Guadalajara (CUCEI), con graduación estimada en 2027. Mientras tanto, construyo proyectos reales: he diseñado, desarrollado y desplegado aplicaciones web completas para negocios locales.",
+      "Me interesan la ingeniería de software, el desarrollo backend y las tecnologías web. Disfruto los proyectos con un problema concreto que resolver: modelar bien los datos, cuidar la experiencia de uso y dejar el código lo suficientemente claro para que el siguiente cambio sea fácil."
+    ],
+    "photoAlt": "Fotografía de Ramiro Ramírez Guzmán",
+    "photoPlaceholder": "// foto próximamente"
+  },
+  "skills": {
+    "label": "... /habilidades ...",
+    "title": "Habilidades",
+    "subtitle": "Algunas de mis tecnologías, temas y herramientas favoritas con las que he trabajado.",
+    "categories": {
+      "languages": "Lenguajes",
+      "web": "Desarrollo web",
+      "databases": "Bases de datos",
+      "tools": "Herramientas",
+      "os": "Sistemas operativos"
+    }
+  },
+  "journey": {
+    "label": "... /trayectoria ...",
+    "title": "Trayectoria",
+    "rows": [
+      {
+        "period": "Actualidad",
+        "periodNote": "graduación est. 2027",
+        "place": "Universidad de Guadalajara — CUCEI",
+        "role": "Ingeniería en Computación",
+        "tag": "Estudiante"
+      },
+      {
+        "period": "En producción",
+        "periodNote": "proyecto full-stack",
+        "place": "PiñataStore",
+        "role": "Desarrollador full-stack",
+        "tag": "PHP & MySQL"
+      },
+      {
+        "period": "En producción",
+        "periodNote": "proyecto full-stack",
+        "place": "Manuel Misael Fotografía",
+        "role": "Desarrollador full-stack",
+        "tag": "React & Node.js"
+      }
+    ],
+    "footnoteLabel": "Proyectos desplegados",
+    "footnote": "en producción y con mantenimiento activo"
+  },
+  "languages": {
+    "label": "... /idiomas ...",
+    "title": "Idiomas",
+    "scaleNote": "Niveles según el Marco Común Europeo (MCER)",
+    "items": [
+      { "name": "Español", "level": "Nativo", "segments": 6 },
+      { "name": "Inglés", "level": "B1 · Intermedio", "segments": 3 }
+    ]
+  },
+  "contact": {
+    "label": "... /contacto ...",
+    "title": "¿Construimos algo juntos?",
+    "subtitle": "Estoy abierto a oportunidades, colaboraciones y buenos proyectos. Escríbeme y te respondo pronto.",
+    "directLabel": "Escríbeme directo",
+    "form": {
+      "name": "Nombre",
+      "namePlaceholder": "Tu nombre",
+      "email": "Correo",
+      "emailPlaceholder": "tu@correo.com",
+      "message": "Mensaje",
+      "messagePlaceholder": "Cuéntame sobre tu proyecto o la oportunidad…",
+      "submit": "Enviar mensaje",
+      "sending": "Enviando…",
+      "success": "¡Mensaje enviado! Te responderé pronto.",
+      "error": "Algo salió mal. Intenta de nuevo o escríbeme directo a mi correo."
+    }
+  },
+  "footer": {
+    "credit": "Diseñado y desarrollado por Ramiro Ramírez Guzmán",
+    "backToTop": "Volver arriba"
+  }
+}

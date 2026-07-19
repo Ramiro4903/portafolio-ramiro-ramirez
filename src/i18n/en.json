@@ -1,0 +1,150 @@
+{
+  "nav": {
+    "links": [
+      { "id": "projects", "label": "Projects" },
+      { "id": "about", "label": "About" },
+      { "id": "skills", "label": "Skills" },
+      { "id": "journey", "label": "Journey" },
+      { "id": "contact", "label": "Contact" }
+    ],
+    "skipLink": "Skip to content",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "langToggle": "Switch language to Spanish"
+  },
+  "hero": {
+    "kicker": "... /portfolio ...",
+    "titleA": "Full-Stack",
+    "titleB": "Developer",
+    "intro": "Computer Engineering student building complete web applications: from the database schema to the last pixel.",
+    "status": "Open to opportunities and collaborations",
+    "cta": "View projects"
+  },
+  "projects": {
+    "label": "... /projects ...",
+    "title": "Featured projects",
+    "subtitle": "Real applications — designed, built and deployed end to end.",
+    "labels": {
+      "objective": "Objective",
+      "challenge": "Challenge",
+      "solution": "Solution",
+      "results": "Results",
+      "stack": "Stack"
+    },
+    "demo": "Live demo",
+    "code": "View code",
+    "live": "In production",
+    "items": {
+      "pinatastore": {
+        "name": "PiñataStore",
+        "type": "E-commerce platform",
+        "description": "Complete e-commerce solution inspired by a local business: product catalog, shopping cart and checkout flow, plus an admin panel to run the store.",
+        "objective": "Digitize the full operation of a real store: sales, inventory and administration in a single platform.",
+        "challenge": "Model a real purchase flow — inventory, promotions, orders, employees and customers — on a relational database, and process online payments securely.",
+        "solution": "Normalized MySQL database for inventory, payments, users and orders; an admin panel to manage products, promotions, employees, customers and orders; and online payment integration.",
+        "results": [
+          "Application deployed to a public environment",
+          "Complete catalog, cart and checkout",
+          "Full store administration from the panel"
+        ]
+      },
+      "manuelmisael": {
+        "name": "Manuel Misael Photography",
+        "type": "Professional photographer site",
+        "description": "Professional website for a photographer: services, photo portfolio and booking information, with a bilingual experience and interactive galleries.",
+        "objective": "Give the photographer a digital presence and turn visits into booking requests.",
+        "challenge": "Display image-heavy galleries without sacrificing performance, serve a bilingual audience and make the booking flow clear.",
+        "solution": "Responsive React application with dynamic language switching, interactive animated galleries and a booking section (KINNETA) with API-connected forms.",
+        "results": [
+          "In production with active maintenance",
+          "Clients browse packages and book from the site",
+          "Optimized for mobile and desktop"
+        ]
+      }
+    }
+  },
+  "about": {
+    "label": "... /about-me ...",
+    "greetingStart": "Hello! I'm Ramiro, a ",
+    "greetingHighlight": "full-stack developer",
+    "greetingEnd": " in the making.",
+    "paragraphs": [
+      "I study Computer Engineering at the University of Guadalajara (CUCEI), with an estimated graduation in 2027. In the meantime, I build real projects: I have designed, developed and deployed complete web applications for local businesses.",
+      "I'm interested in software engineering, backend development and web technologies. I enjoy projects with a concrete problem to solve: modeling the data well, caring about the user experience, and leaving the code clear enough that the next change is easy."
+    ],
+    "photoAlt": "Photo of Ramiro Ramírez Guzmán",
+    "photoPlaceholder": "// photo coming soon"
+  },
+  "skills": {
+    "label": "... /skills ...",
+    "title": "Skills",
+    "subtitle": "Some of my favorite technologies, topics and tools that I've worked with.",
+    "categories": {
+      "languages": "Languages",
+      "web": "Web development",
+      "databases": "Databases",
+      "tools": "Tools",
+      "os": "Operating systems"
+    }
+  },
+  "journey": {
+    "label": "... /journey ...",
+    "title": "Journey",
+    "rows": [
+      {
+        "period": "Currently",
+        "periodNote": "est. graduation 2027",
+        "place": "University of Guadalajara — CUCEI",
+        "role": "Computer Engineering",
+        "tag": "Student"
+      },
+      {
+        "period": "In production",
+        "periodNote": "full-stack project",
+        "place": "PiñataStore",
+        "role": "Full-stack developer",
+        "tag": "PHP & MySQL"
+      },
+      {
+        "period": "In production",
+        "periodNote": "full-stack project",
+        "place": "Manuel Misael Photography",
+        "role": "Full-stack developer",
+        "tag": "React & Node.js"
+      }
+    ],
+    "footnoteLabel": "Deployed projects",
+    "footnote": "in production and actively maintained"
+  },
+  "languages": {
+    "label": "... /languages ...",
+    "title": "Languages",
+    "scaleNote": "Levels according to the CEFR scale",
+    "items": [
+      { "name": "Spanish", "level": "Native", "segments": 6 },
+      { "name": "English", "level": "B1 · Intermediate", "segments": 3 }
+    ]
+  },
+  "contact": {
+    "label": "... /contact ...",
+    "title": "Let's build something together",
+    "subtitle": "I'm open to opportunities, collaborations and good projects. Write to me and I'll get back to you soon.",
+    "directLabel": "Email me directly",
+    "form": {
+      "name": "Name",
+      "namePlaceholder": "Your name",
+      "email": "Email",
+      "emailPlaceholder": "you@email.com",
+      "message": "Message",
+      "messagePlaceholder": "Tell me about your project or opportunity…",
+      "submit": "Send message",
+      "sending": "Sending…",
+      "success": "Message sent! I'll get back to you soon.",
+      "error": "Something went wrong. Try again or email me directly."
+    }
+  },
+  "footer": {
+    "credit": "Designed and developed by Ramiro Ramírez Guzmán",
+    "backToTop": "Back to top"
+  }
+}

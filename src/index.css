@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+@theme {
+  /* Monochrome palette — the identity of the site is black/white inversion */
+  --color-ink: #070707;
+  --color-surface: #111112;
+  --color-raised: #17171a;
+  --color-line: #26262a;
+  --color-fog: #8d8d90;
+  --color-paper: #f2f2f0;
+  --color-pure: #ffffff;
+
+  --font-display: "JetBrains Mono Variable", ui-monospace, "Cascadia Code", monospace;
+  --font-body: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+
+  --radius-card: 1.5rem;
+
+  --animate-blink: blink 1.1s step-end infinite;
+
+  @keyframes blink {
+    50% {
+      opacity: 0;
+    }
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
+}
+
+body {
+  @apply bg-ink text-paper font-body antialiased;
+}
+
+::selection {
+  background: var(--color-paper);
+  color: var(--color-ink);
+}
+
+/* Visible keyboard focus, consistent with the inversion language */
+:focus-visible {
+  outline: 2px solid var(--color-paper);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
