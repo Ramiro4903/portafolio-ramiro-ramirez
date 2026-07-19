@@ -11,9 +11,12 @@ export const profile = {
   github: "https://github.com/Ramiro4903",
   linkedin: "https://www.linkedin.com/in/ramiroramirezguzman/",
 
-  // Ruta de la foto personal (colócala en /public y actualiza aquí).
-  // Con null se muestra el placeholder de la sección "Sobre mí".
-  photo: null,
+  // Fotos de la sección "Sobre mí" (viven en /public).
+  // photo es la principal; photoHover aparece con un cross-fade al
+  // pasar el cursor (déjala en null para desactivar el efecto).
+  // Con photo en null se muestra el placeholder tipográfico.
+  photo: "/ramiro-1.jpg",
+  photoHover: "/ramiro-2.jpg",
 
   // CVs en PDF (viven en /public). El botón "Ver CV" abre la versión
   // del idioma activo en otra pestaña, desde donde se puede descargar.

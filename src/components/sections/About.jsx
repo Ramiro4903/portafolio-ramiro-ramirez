@@ -32,11 +32,22 @@ export function About() {
 
           <Reveal delay={0.15} className="lg:justify-self-end">
             {profile.photo ? (
-              <img
-                src={profile.photo}
-                alt={t("about.photoAlt")}
-                className="aspect-4/5 w-full max-w-sm rounded-card border border-line object-cover grayscale"
-              />
+              <div className="group relative aspect-4/5 w-full max-w-sm overflow-hidden rounded-card border border-line">
+                <img
+                  src={profile.photo}
+                  alt={t("about.photoAlt")}
+                  className="h-full w-full object-cover grayscale"
+                />
+                {profile.photoHover && (
+                  <img
+                    src={profile.photoHover}
+                    alt=""
+                    aria-hidden="true"
+                    loading="lazy"
+                    className="absolute inset-0 h-full w-full object-cover opacity-0 grayscale transition-opacity duration-500 group-hover:opacity-100"
+                  />
+                )}
+              </div>
             ) : (
               <div
                 role="img"

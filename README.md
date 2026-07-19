@@ -45,12 +45,13 @@ visitante con el mensaje ya redactado (sigue siendo funcional).
 2. Crea un formulario y copia su ID (p. ej. `mqkvazyw`)
 3. En `src/data/profile.js`: `export const FORMSPREE_ID = "mqkvazyw";`
 
-### 2. Agregar tu foto
+### 2. Cambiar las fotos
 
-1. Coloca tu foto en `public/` (p. ej. `public/ramiro.jpg`)
-2. En `src/data/profile.js`: `photo: "/ramiro.jpg"`
-
-El placeholder desaparece automáticamente.
+Las fotos viven en `public/` (`ramiro-1.jpg` principal, `ramiro-2.jpg` la que
+aparece al pasar el cursor) y se configuran en `src/data/profile.js` (`photo` y
+`photoHover`). Recomendado: recorte 4:5 (p. ej. 720×900) para que encajen sin
+recortes inesperados. Con `photoHover: null` se desactiva el efecto hover; con
+`photo: null` vuelve el placeholder tipográfico.
 
 ### 3. Links de demo y código de los proyectos
 
@@ -96,7 +97,7 @@ esquema). Edita ambos para mantener la paridad de idiomas.
 
 ## Mejoras futuras
 
-- [ ] Foto real y links de demo/código (ver arriba)
+- [ ] Links de demo/código de los proyectos (ver arriba)
 - [ ] Imagen Open Graph (`public/og-image.png`, 1200×630) para compartir en redes
 - [ ] Sección de blog/artículos cuando haya contenido
 - [ ] Analytics ligero (Vercel Analytics o Plausible)
