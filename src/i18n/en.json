@@ -15,8 +15,8 @@
   "hero": {
     "kicker": "... /portfolio ...",
     "titleA": "Ramiro Ramírez",
-    "titleB": "Developer",
-    "intro": "Software developer and Computer Engineering student at the University of Guadalajara. I like solving problems with code: from the backend and databases to the interface.",
+    "titleB": "Software Developer",
+    "intro": "Software developer and Computer Engineering student. I'm passionate about solving real problems with code: I enjoy exploring and learning from the whole development process.",
     "status": "Open to opportunities and collaborations",
     "cta": "View projects"
   },
@@ -67,11 +67,11 @@
   "about": {
     "label": "... /about-me ...",
     "greetingStart": "Hello! I'm Ramiro, a ",
-    "greetingHighlight": "full-stack developer",
+    "greetingHighlight": "software developer",
     "greetingEnd": " in the making.",
     "paragraphs": [
-      "I study Computer Engineering at the University of Guadalajara (CUCEI), with an estimated graduation in 2027. In the meantime, I build real projects: I have designed, developed and deployed complete web applications for local businesses.",
-      "I'm interested in software engineering, backend development and web technologies. I enjoy projects with a concrete problem to solve: modeling the data well, caring about the user experience, and leaving the code clear enough that the next change is easy."
+      "I study Computer Engineering at the University of Guadalajara (CUCEI), with an estimated graduation in 2027. To complement what I learn in class, I build real projects: I have designed and developed web applications from scratch for local businesses.",
+      "I'm interested in every area of development, so I'm always looking to learn both backend and frontend. I really enjoy the process of solving a problem from scratch: thinking about how to organize the data and making sure the end user has a great experience using the app."
     ],
     "photoAlt": "Photo of Ramiro Ramírez Guzmán",
     "photoPlaceholder": "// photo coming soon"

@@ -38,7 +38,7 @@ export function Hero() {
           </motion.span>
           <motion.span
             {...enter(0.16)}
-            className="block text-right text-[clamp(2.25rem,9vw,6.5rem)]"
+            className="mt-2 block text-right text-[clamp(1.55rem,5.9vw,4.25rem)] text-paper/90"
           >
             {t("hero.titleB")}
             <span className="animate-blink" aria-hidden="true">

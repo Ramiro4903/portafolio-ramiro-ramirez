@@ -15,8 +15,8 @@
   "hero": {
     "kicker": "... /portafolio ...",
     "titleA": "Ramiro Ramírez",
-    "titleB": "Desarrollador",
-    "intro": "Desarrollador de software y estudiante de Ingeniería en Computación en la Universidad de Guadalajara. Me gusta resolver problemas con código: del backend y las bases de datos a la interfaz.",
+    "titleB": "Desarrollador de Software",
+    "intro": "Desarrollador de software y estudiante de Ingeniería en Computación. Me apasiona resolver problemas reales con código: disfruto explorar y aprender de todo el proceso de desarrollo.",
     "status": "Abierto a oportunidades y colaboraciones",
     "cta": "Ver proyectos"
   },
@@ -67,11 +67,11 @@
   "about": {
     "label": "... /sobre-mi ...",
     "greetingStart": "¡Hola! Soy Ramiro, ",
-    "greetingHighlight": "desarrollador full-stack",
+    "greetingHighlight": "desarrollador de software",
     "greetingEnd": " en formación.",
     "paragraphs": [
-      "Estudio Ingeniería en Computación en la Universidad de Guadalajara (CUCEI), con graduación estimada en 2027. Mientras tanto, construyo proyectos reales: he diseñado, desarrollado y desplegado aplicaciones web completas para negocios locales.",
-      "Me interesan la ingeniería de software, el desarrollo backend y las tecnologías web. Disfruto los proyectos con un problema concreto que resolver: modelar bien los datos, cuidar la experiencia de uso y dejar el código lo suficientemente claro para que el siguiente cambio sea fácil."
+      "Estudio Ingeniería en Computación en la Universidad de Guadalajara (CUCEI), con graduación estimada en 2027. Para complementar lo que aprendo en clases, me dedico a construir proyectos reales: he diseñado y desarrollado aplicaciones web desde cero para negocios locales.",
+      "Me interesa el desarrollo en todas sus áreas, por lo que siempre busco aprender de backend y de frontend. Disfruto mucho el proceso de resolver un problema desde cero: pensando en cómo organizar los datos, cuidando que el usuario final tenga una gran experiencia al usar la app."
     ],
     "photoAlt": "Fotografía de Ramiro Ramírez Guzmán",
     "photoPlaceholder": "// foto próximamente"
