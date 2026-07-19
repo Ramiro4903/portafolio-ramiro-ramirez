@@ -1,3 +1,4 @@
+import { Cursor } from "./components/ui/Cursor.jsx";
 import { Navbar } from "./components/layout/Navbar.jsx";
 import { Footer } from "./components/layout/Footer.jsx";
 import { Hero } from "./components/sections/Hero.jsx";
@@ -11,6 +12,7 @@ import { Contact } from "./components/sections/Contact.jsx";
 export default function App() {
   return (
     <div id="top">
+      <Cursor />
       <Navbar />
       <main id="main">
         <Hero />

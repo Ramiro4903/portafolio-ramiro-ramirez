@@ -38,6 +38,16 @@ body {
   color: var(--color-ink);
 }
 
+/* Con el cursor personalizado activo se oculta el nativo, excepto en
+   campos de texto donde el I-beam ayuda a la precisión */
+.custom-cursor,
+.custom-cursor a,
+.custom-cursor button,
+.custom-cursor label,
+.custom-cursor select {
+  cursor: none;
+}
+
 /* Visible keyboard focus, consistent with the inversion language */
 :focus-visible {
   outline: 2px solid var(--color-paper);
