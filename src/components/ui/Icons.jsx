@@ -25,6 +25,15 @@ export function MailIcon(props) {
   );
 }
 
+export function FileIcon(props) {
+  return (
+    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true" {...props}>
+      <path d="M13.5 3H7a1.5 1.5 0 0 0-1.5 1.5v15A1.5 1.5 0 0 0 7 21h10a1.5 1.5 0 0 0 1.5-1.5V8L13.5 3Z" />
+      <path d="M13.5 3v5h5M9.5 13h5M9.5 16.5h5" />
+    </svg>
+  );
+}
+
 export function ArrowIcon(props) {
   return (
     <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true" {...props}>

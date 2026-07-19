@@ -3,7 +3,7 @@ import { useLang } from "../../i18n/LanguageContext.jsx";
 import { profile } from "../../data/profile.js";
 import { Pill } from "../ui/Pill.jsx";
 import { SectionLabel } from "../ui/SectionLabel.jsx";
-import { GithubIcon, LinkedinIcon, MailIcon, ArrowIcon } from "../ui/Icons.jsx";
+import { GithubIcon, LinkedinIcon, MailIcon, ArrowIcon, FileIcon } from "../ui/Icons.jsx";
 
 export function Hero() {
   const { t } = useLang();
@@ -79,6 +79,10 @@ export function Hero() {
           <Pill href={`mailto:${profile.email}`} className="text-xs">
             <MailIcon />
             Email
+          </Pill>
+          <Pill href={profile.cv} target="_blank" rel="noopener noreferrer" className="text-xs">
+            <FileIcon />
+            {t("common.cv")}
           </Pill>
         </motion.div>
       </div>

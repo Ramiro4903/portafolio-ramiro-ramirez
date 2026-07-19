@@ -47,10 +47,6 @@ export function Languages() {
             </Reveal>
           ))}
         </div>
-
-        <Reveal delay={0.15}>
-          <p className="mt-4 font-display text-xs text-fog">{t("languages.scaleNote")}</p>
-        </Reveal>
       </div>
     </section>
   );

@@ -4,7 +4,7 @@ import { profile, FORMSPREE_ID } from "../../data/profile.js";
 import { Reveal } from "../ui/Reveal.jsx";
 import { SectionLabel } from "../ui/SectionLabel.jsx";
 import { Pill } from "../ui/Pill.jsx";
-import { GithubIcon, LinkedinIcon, MailIcon } from "../ui/Icons.jsx";
+import { GithubIcon, LinkedinIcon, MailIcon, FileIcon } from "../ui/Icons.jsx";
 
 const inputClasses =
   "w-full rounded-2xl border border-line bg-surface px-5 py-3.5 text-sm text-paper placeholder:text-fog/60 transition-colors duration-200 focus:border-paper focus:outline-none";
@@ -77,6 +77,10 @@ export function Contact() {
               <Pill href={`mailto:${profile.email}`} className="text-xs">
                 <MailIcon />
                 Email
+              </Pill>
+              <Pill href={profile.cv} target="_blank" rel="noopener noreferrer" className="text-xs">
+                <FileIcon />
+                {t("common.cv")}
               </Pill>
             </div>
           </Reveal>

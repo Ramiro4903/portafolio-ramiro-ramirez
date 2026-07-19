@@ -91,7 +91,6 @@ esquema). Edita ambos para mantener la paridad de idiomas.
 ## Mejoras futuras
 
 - [ ] Foto real y links de demo/código (ver arriba)
-- [ ] Botón "Descargar CV" (colocar el PDF en `public/` y enlazarlo en el Hero)
 - [ ] Imagen Open Graph (`public/og-image.png`, 1200×630) para compartir en redes
 - [ ] Sección de blog/artículos cuando haya contenido
 - [ ] Analytics ligero (Vercel Analytics o Plausible)

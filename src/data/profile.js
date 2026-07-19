@@ -14,6 +14,10 @@ export const profile = {
   // Ruta de la foto personal (colócala en /public y actualiza aquí).
   // Con null se muestra el placeholder de la sección "Sobre mí".
   photo: null,
+
+  // CV en PDF (vive en /public). Se abre en otra pestaña con el
+  // visor del navegador, desde donde también se puede descargar.
+  cv: "/CV-Ramiro-Ramirez.pdf",
 };
 
 // ID de Formspree para el formulario de contacto.
