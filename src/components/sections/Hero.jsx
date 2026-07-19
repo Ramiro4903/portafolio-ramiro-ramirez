@@ -6,7 +6,7 @@ import { SectionLabel } from "../ui/SectionLabel.jsx";
 import { GithubIcon, LinkedinIcon, MailIcon, ArrowIcon, FileIcon } from "../ui/Icons.jsx";
 
 export function Hero() {
-  const { t } = useLang();
+  const { lang, t } = useLang();
   const reduceMotion = useReducedMotion();
 
   const enter = (delay) => ({
@@ -80,7 +80,7 @@ export function Hero() {
             <MailIcon />
             Email
           </Pill>
-          <Pill href={profile.cv} target="_blank" rel="noopener noreferrer" className="text-xs">
+          <Pill href={profile.cv[lang]} target="_blank" rel="noopener noreferrer" className="text-xs">
             <FileIcon />
             {t("common.cv")}
           </Pill>

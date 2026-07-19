@@ -68,7 +68,13 @@ export const projectLinks = {
 
 Los botones "Ver demo" / "Ver código" aparecen solo cuando el link existe.
 
-### 4. Editar textos
+### 4. Actualizar el CV
+
+Los PDFs viven en `public/` (`CV-Ramiro-Ramirez-ES.pdf` y `CV-Ramiro-Ramirez-EN.pdf`).
+El botón "Ver CV" abre automáticamente la versión del idioma activo; para
+actualizar tu CV solo reemplaza el PDF correspondiente (mismo nombre de archivo).
+
+### 5. Editar textos
 
 Todo el contenido vive en `src/i18n/es.json` y `src/i18n/en.json` (mismo
 esquema). Edita ambos para mantener la paridad de idiomas.

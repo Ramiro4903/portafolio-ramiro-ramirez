@@ -10,7 +10,7 @@ const inputClasses =
   "w-full rounded-2xl border border-line bg-surface px-5 py-3.5 text-sm text-paper placeholder:text-fog/60 transition-colors duration-200 focus:border-paper focus:outline-none";
 
 export function Contact() {
-  const { t } = useLang();
+  const { lang, t } = useLang();
   const [status, setStatus] = useState("idle"); // idle | sending | success | error
   const form = t("contact.form");
 
@@ -78,7 +78,7 @@ export function Contact() {
                 <MailIcon />
                 Email
               </Pill>
-              <Pill href={profile.cv} target="_blank" rel="noopener noreferrer" className="text-xs">
+              <Pill href={profile.cv[lang]} target="_blank" rel="noopener noreferrer" className="text-xs">
                 <FileIcon />
                 {t("common.cv")}
               </Pill>
