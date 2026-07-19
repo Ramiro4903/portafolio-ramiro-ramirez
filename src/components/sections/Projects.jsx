@@ -32,7 +32,7 @@ function ProjectCard({ project }) {
         </div>
         <span className="inline-flex items-center gap-2 rounded-full border border-line px-4 py-1.5 font-display text-xs text-fog">
           <span className="inline-block h-1.5 w-1.5 rounded-full bg-paper" aria-hidden="true" />
-          {t("projects.live")}
+          {item.status}
         </span>
       </header>
 

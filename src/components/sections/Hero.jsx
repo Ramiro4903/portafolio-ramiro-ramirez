@@ -33,12 +33,12 @@ export function Hero() {
         </motion.div>
 
         <h1 className="mt-6 font-display font-bold leading-[0.95] tracking-tight">
-          <motion.span {...enter(0.08)} className="block text-[clamp(2.9rem,10vw,7.5rem)]">
+          <motion.span {...enter(0.08)} className="block text-[clamp(2.25rem,9vw,6.5rem)]">
             {t("hero.titleA")}
           </motion.span>
           <motion.span
             {...enter(0.16)}
-            className="block text-right text-[clamp(2.9rem,10vw,7.5rem)]"
+            className="block text-right text-[clamp(2.25rem,9vw,6.5rem)]"
           >
             {t("hero.titleB")}
             <span className="animate-blink" aria-hidden="true">

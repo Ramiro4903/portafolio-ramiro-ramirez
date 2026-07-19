@@ -14,9 +14,9 @@
   },
   "hero": {
     "kicker": "... /portafolio ...",
-    "titleA": "Full-Stack",
-    "titleB": "Developer",
-    "intro": "Estudiante de Ingeniería en Computación construyendo aplicaciones web completas: del esquema de la base de datos al último pixel.",
+    "titleA": "Ramiro Ramírez",
+    "titleB": "Desarrollador",
+    "intro": "Desarrollador de software y estudiante de Ingeniería en Computación en la Universidad de Guadalajara. Me gusta resolver problemas con código: del backend y las bases de datos a la interfaz.",
     "status": "Abierto a oportunidades y colaboraciones",
     "cta": "Ver proyectos"
   },
@@ -33,12 +33,12 @@
     },
     "demo": "Ver demo",
     "code": "Ver código",
-    "live": "En producción",
     "items": {
       "pinatastore": {
         "name": "PiñataStore",
-        "type": "Plataforma e-commerce",
-        "description": "Solución completa de comercio electrónico inspirada en un negocio local: catálogo de productos, carrito de compras y flujo de pago, junto con un panel administrativo para operar la tienda.",
+        "type": "E-commerce · Proyecto escolar",
+        "status": "Terminado",
+        "description": "Proyecto escolar de comercio electrónico completo, inspirado en un negocio local: catálogo de productos, carrito de compras y flujo de pago, junto con un panel administrativo para operar la tienda.",
         "objective": "Digitalizar la operación completa de una tienda real: ventas, inventario y administración en una sola plataforma.",
         "challenge": "Modelar sobre una base de datos relacional un flujo de compra real —inventario, promociones, pedidos, empleados y clientes— y procesar pagos en línea de forma segura.",
         "solution": "Base de datos MySQL normalizada para inventario, pagos, usuarios y pedidos; panel administrativo para gestionar productos, promociones, empleados, clientes y pedidos; e integración de pago en línea.",
@@ -51,6 +51,7 @@
       "manuelmisael": {
         "name": "Manuel Misael Fotografía",
         "type": "Sitio para fotógrafo profesional",
+        "status": "En producción",
         "description": "Sitio profesional para un fotógrafo: servicios, portafolio fotográfico e información de reservaciones, con una experiencia bilingüe y galerías interactivas.",
         "objective": "Dar presencia digital al fotógrafo y convertir visitas en solicitudes de reservación.",
         "challenge": "Mostrar galerías con gran cantidad de imágenes sin sacrificar rendimiento, atender a una audiencia bilingüe y hacer claro el flujo de reservas.",
@@ -99,8 +100,8 @@
         "tag": "Estudiante"
       },
       {
-        "period": "En producción",
-        "periodNote": "proyecto full-stack",
+        "period": "Terminado",
+        "periodNote": "proyecto escolar full-stack",
         "place": "PiñataStore",
         "role": "Desarrollador full-stack",
         "tag": "PHP & MySQL"

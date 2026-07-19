@@ -14,9 +14,9 @@
   },
   "hero": {
     "kicker": "... /portfolio ...",
-    "titleA": "Full-Stack",
+    "titleA": "Ramiro Ramírez",
     "titleB": "Developer",
-    "intro": "Computer Engineering student building complete web applications: from the database schema to the last pixel.",
+    "intro": "Software developer and Computer Engineering student at the University of Guadalajara. I like solving problems with code: from the backend and databases to the interface.",
     "status": "Open to opportunities and collaborations",
     "cta": "View projects"
   },
@@ -33,12 +33,12 @@
     },
     "demo": "Live demo",
     "code": "View code",
-    "live": "In production",
     "items": {
       "pinatastore": {
         "name": "PiñataStore",
-        "type": "E-commerce platform",
-        "description": "Complete e-commerce solution inspired by a local business: product catalog, shopping cart and checkout flow, plus an admin panel to run the store.",
+        "type": "E-commerce · School project",
+        "status": "Completed",
+        "description": "Complete e-commerce school project inspired by a local business: product catalog, shopping cart and checkout flow, plus an admin panel to run the store.",
         "objective": "Digitize the full operation of a real store: sales, inventory and administration in a single platform.",
         "challenge": "Model a real purchase flow — inventory, promotions, orders, employees and customers — on a relational database, and process online payments securely.",
         "solution": "Normalized MySQL database for inventory, payments, users and orders; an admin panel to manage products, promotions, employees, customers and orders; and online payment integration.",
@@ -51,6 +51,7 @@
       "manuelmisael": {
         "name": "Manuel Misael Photography",
         "type": "Professional photographer site",
+        "status": "In production",
         "description": "Professional website for a photographer: services, photo portfolio and booking information, with a bilingual experience and interactive galleries.",
         "objective": "Give the photographer a digital presence and turn visits into booking requests.",
         "challenge": "Display image-heavy galleries without sacrificing performance, serve a bilingual audience and make the booking flow clear.",
@@ -99,8 +100,8 @@
         "tag": "Student"
       },
       {
-        "period": "In production",
-        "periodNote": "full-stack project",
+        "period": "Completed",
+        "periodNote": "full-stack school project",
         "place": "PiñataStore",
         "role": "Full-stack developer",
         "tag": "PHP & MySQL"
