@@ -5,8 +5,9 @@ import { motion, useMotionValue, useSpring, useReducedMotion } from "motion/reac
 // un aro con retardo suave. Sobre elementos interactivos el aro crece
 // y se rellena; con mix-blend-difference invierte lo que hay debajo,
 // en línea con el lenguaje de inversión blanco/negro del sitio.
-// Solo se activa con puntero de precisión (mouse) y respeta
-// prefers-reduced-motion; en táctil no se renderiza.
+// Solo se activa con puntero de precisión (mouse); en táctil no se
+// renderiza. Con prefers-reduced-motion el cursor se mantiene, pero
+// sin animaciones: el aro sigue al puntero directo, sin resorte.
 export function Cursor() {
   const reduceMotion = useReducedMotion();
   const [enabled, setEnabled] = useState(false);
@@ -15,11 +16,13 @@ export function Cursor() {
 
   const x = useMotionValue(-100);
   const y = useMotionValue(-100);
-  const ringX = useSpring(x, { stiffness: 400, damping: 40, mass: 0.8 });
-  const ringY = useSpring(y, { stiffness: 400, damping: 40, mass: 0.8 });
+  const springX = useSpring(x, { stiffness: 400, damping: 40, mass: 0.8 });
+  const springY = useSpring(y, { stiffness: 400, damping: 40, mass: 0.8 });
+  const ringX = reduceMotion ? x : springX;
+  const ringY = reduceMotion ? y : springY;
 
   useEffect(() => {
-    if (reduceMotion || !window.matchMedia("(pointer: fine)").matches) return undefined;
+    if (!window.matchMedia("(pointer: fine)").matches) return undefined;
 
     setEnabled(true);
     document.documentElement.classList.add("custom-cursor");
@@ -64,7 +67,11 @@ export function Cursor() {
           opacity: visible ? 1 : 0,
           scale: active ? 1.8 : 1,
         }}
-        transition={{ opacity: { duration: 0.15 }, scale: { type: "spring", stiffness: 350, damping: 25 } }}
+        transition={
+          reduceMotion
+            ? { duration: 0 }
+            : { opacity: { duration: 0.15 }, scale: { type: "spring", stiffness: 350, damping: 25 } }
+        }
         className={`pointer-events-none fixed top-0 left-0 z-[100] -ml-[18px] -mt-[18px] h-9 w-9 rounded-full mix-blend-difference transition-colors duration-200 ${
           active ? "bg-pure" : "border border-pure/70"
         }`}
