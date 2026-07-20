@@ -17,7 +17,7 @@
     "closeShort": "Cerrar",
     "langToggle": "Cambiar idioma a inglés",
     "previews": {
-      "projects": "PiñataStore · Manuel Misael Fotografía",
+      "projects": "App de Compras · Marketplace Estudiantil · Manuel Misael",
       "about": "Ingeniería en Computación — UdeG (CUCEI)",
       "skills": "React / Node.js / Python / MySQL / Docker",
       "journey": "CUCEI · graduación est. 2027",
@@ -51,7 +51,7 @@
       "dragHint": "Arrastra para explorar"
     },
     "extra": {
-      "kicker": "03 / ¿El siguiente?",
+      "kicker": "04 / ¿El siguiente?",
       "title": "Tu proyecto aquí",
       "text": "Estoy en búsqueda constante de proyectos para seguir aprendiendo y construyendo. Si tienes una idea o una oportunidad, me encantaría escucharla.",
       "cta": "Hablemos",
@@ -59,10 +59,10 @@
     },
     "items": {
       "pinatastore": {
-        "name": "PiñataStore",
+        "name": "App de Compras",
         "type": "E-commerce · Proyecto escolar",
         "status": "Terminado",
-        "description": "Proyecto escolar de comercio electrónico completo, inspirado en un negocio local: catálogo de productos, carrito de compras y flujo de pago, junto con un panel administrativo para operar la tienda.",
+        "description": "Proyecto escolar de comercio electrónico completo, inspirado en un negocio local: catálogo de productos, carrito de compras y flujo de pago, junto con un panel administrativo para operar la tienda. Los productos a la venta son piñatas artesanales del propio negocio.",
         "objective": "Digitalizar la operación completa de una tienda real: ventas, inventario y administración en una sola plataforma.",
         "challenge": "Modelar sobre una base de datos relacional un flujo de compra real —inventario, promociones, pedidos, empleados y clientes— y procesar pagos en línea de forma segura.",
         "solution": "Base de datos MySQL normalizada para inventario, pagos, usuarios y pedidos; panel administrativo para gestionar productos, promociones, empleados, clientes y pedidos; e integración de pago en línea.",
@@ -70,6 +70,20 @@
           "Aplicación desplegada en un entorno público",
           "Catálogo, carrito y checkout completos",
           "Administración integral de la tienda desde el panel"
+        ]
+      },
+      "modular": {
+        "name": "Marketplace Estudiantil",
+        "type": "Proyecto modular · CUCEI",
+        "status": "Próximamente",
+        "description": "Plataforma web que centralizará la compra y venta de productos entre estudiantes del CUCEI: publicaciones con precio, ubicación y horarios de venta, búsqueda por categorías y roles de comprador y vendedor. Es mi proyecto modular de la carrera, desarrollado en equipo.",
+        "objective": "Sustituir los grupos informales de WhatsApp y Facebook por una plataforma única que conecte la oferta y la demanda dentro del centro universitario.",
+        "challenge": "Las publicaciones dispersas en redes sociales son lineales y volátiles: no permiten persistencia ni categorización, y dejan sin información clara los precios, la ubicación y la disponibilidad de los vendedores.",
+        "solution": "Aplicación web con registro y roles de comprador/vendedor, publicación de productos por categorías y búsqueda con filtros, construida por fases —diseño UI/UX, backend con APIs y base de datos, frontend responsive y pruebas con usuarios reales— bajo una metodología ágil basada en Scrum.",
+        "results": [
+          "Meta: módulo de registro con roles de comprador y vendedor",
+          "Meta: búsqueda funcional por categorías y filtros",
+          "Meta: más del 60% de aceptación en pruebas piloto"
         ]
       },
       "manuelmisael": {
@@ -126,7 +140,7 @@
       {
         "period": "Terminado",
         "periodNote": "proyecto escolar full-stack",
-        "place": "PiñataStore",
+        "place": "App de Compras (PiñataStore)",
         "role": "Desarrollador full-stack",
         "tag": "PHP & MySQL"
       },

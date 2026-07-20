@@ -9,8 +9,13 @@ export const projects = [
     index: "01",
   },
   {
+    id: "modular",
+    tech: ["UI/UX", "APIs", "SQL", "Figma", "GitHub", "Scrum"],
+    index: "02",
+  },
+  {
     id: "manuelmisael",
     tech: ["React", "Node.js", "JavaScript", "HTML", "CSS"],
-    index: "02",
+    index: "03",
   },
 ];

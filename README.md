@@ -45,13 +45,13 @@ visitante con el mensaje ya redactado (sigue siendo funcional).
 2. Crea un formulario y copia su ID (p. ej. `mqkvazyw`)
 3. En `src/data/profile.js`: `export const FORMSPREE_ID = "mqkvazyw";`
 
-### 2. Cambiar las fotos
+### 2. Cambiar la foto
 
-Las fotos viven en `public/` (`ramiro-1.jpg` principal, `ramiro-2.jpg` la que
-aparece al pasar el cursor) y se configuran en `src/data/profile.js` (`photo` y
-`photoHover`). Recomendado: recorte 4:5 (p. ej. 720×900) para que encajen sin
-recortes inesperados. Con `photoHover: null` se desactiva el efecto hover; con
-`photo: null` vuelve el placeholder tipográfico.
+La foto de "Sobre mí" vive en `public/ramiro-1.jpg` y se configura en
+`src/data/profile.js` (`photo`). Recomendado: recorte 4:5 (p. ej. 720×900) para
+que encaje sin recortes inesperados. Con `photo: null` vuelve el placeholder
+tipográfico; `photoHover` acepta una segunda foto para un cross-fade al pasar
+el cursor (desactivado con `null`).
 
 ### 3. Links de demo y código de los proyectos
 

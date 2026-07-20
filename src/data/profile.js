@@ -11,12 +11,12 @@ export const profile = {
   github: "https://github.com/Ramiro4903",
   linkedin: "https://www.linkedin.com/in/ramiroramirezguzman/",
 
-  // Fotos de la sección "Sobre mí" (viven en /public).
-  // photo es la principal; photoHover aparece con un cross-fade al
-  // pasar el cursor (déjala en null para desactivar el efecto).
+  // Foto de la sección "Sobre mí" (vive en /public).
+  // photoHover (opcional) aparece con un cross-fade al pasar el
+  // cursor; en null el efecto queda desactivado.
   // Con photo en null se muestra el placeholder tipográfico.
   photo: "/ramiro-1.jpg",
-  photoHover: "/ramiro-2.jpg",
+  photoHover: null,
 
   // CVs en PDF (viven en /public). El botón "Ver CV" abre la versión
   // del idioma activo en otra pestaña, desde donde se puede descargar.
@@ -44,6 +44,10 @@ export const projectLinks = {
   pinatastore: {
     demo: null, // p. ej. "https://pinatastore.com"
     code: null, // p. ej. "https://github.com/Ramiro4903/pinatastore"
+  },
+  modular: {
+    demo: null,
+    code: null,
   },
   manuelmisael: {
     demo: null,
