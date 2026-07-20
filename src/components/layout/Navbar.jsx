@@ -41,40 +41,65 @@ export function Navbar() {
       </a>
 
       <header className="fixed inset-x-0 top-0 z-50 border-b border-line/60 bg-ink/80 backdrop-blur-md">
-        <nav className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4 sm:px-8">
+        <nav className="mx-auto flex max-w-6xl items-center justify-between px-5 py-3 sm:px-8">
           <a
             href="#top"
             onClick={() => setMenuOpen(false)}
-            className="font-display text-sm leading-tight text-paper"
+            className="group flex items-center gap-3"
           >
-            {firstName}
-            <br />
-            {rest.join(" ")}
+            <img
+              src="/avatar.png"
+              alt=""
+              width="40"
+              height="40"
+              className="h-10 w-10 rounded-full border border-line transition-transform duration-300 ease-out group-hover:-rotate-12 group-hover:scale-110 group-hover:border-paper"
+            />
+            <span className="font-display text-sm leading-tight text-paper">
+              {firstName}
+              <br />
+              {rest.join(" ")}
+            </span>
           </a>
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3">
+            {/* Selector de idioma segmentado: el idioma activo queda
+                invertido (fondo claro), el otro en gris */}
             <button
               onClick={toggleLang}
               aria-label={t("nav.langToggle")}
-              className="cursor-pointer font-display text-xs leading-snug transition-colors duration-200"
+              className="flex cursor-pointer items-center rounded-full border border-line p-1 font-display text-xs transition-colors duration-200 hover:border-paper"
             >
-              <span className={lang === "es" ? "text-paper" : "text-fog hover:text-paper"}>Es</span>
-              <br />
-              <span className={lang === "en" ? "text-paper" : "text-fog hover:text-paper"}>En</span>
+              <span
+                className={`rounded-full px-2.5 py-1 transition-colors duration-200 ${
+                  lang === "es" ? "bg-paper font-bold text-ink" : "text-fog"
+                }`}
+              >
+                ES
+              </span>
+              <span
+                className={`rounded-full px-2.5 py-1 transition-colors duration-200 ${
+                  lang === "en" ? "bg-paper font-bold text-ink" : "text-fog"
+                }`}
+              >
+                EN
+              </span>
             </button>
 
             <button
               onClick={() => setMenuOpen(!menuOpen)}
               aria-expanded={menuOpen}
               aria-label={menuOpen ? t("nav.closeMenu") : t("nav.openMenu")}
-              className="flex h-10 w-10 cursor-pointer flex-col items-center justify-center gap-1.5 rounded-full border border-line transition-colors duration-200 hover:border-paper"
+              className="flex cursor-pointer items-center gap-2.5 rounded-full border border-line py-2 pr-4 pl-5 font-display text-xs text-paper transition-colors duration-200 hover:bg-paper hover:text-ink"
             >
-              <span
-                className={`h-px w-4 bg-paper transition-transform duration-200 ${menuOpen ? "translate-y-[3.5px] rotate-45" : ""}`}
-              />
-              <span
-                className={`h-px w-4 bg-paper transition-transform duration-200 ${menuOpen ? "-translate-y-[3.5px] -rotate-45" : ""}`}
-              />
+              {menuOpen ? t("nav.closeShort") : t("nav.menuShort")}
+              <span className="flex flex-col items-center justify-center gap-1" aria-hidden="true">
+                <span
+                  className={`h-px w-4 bg-current transition-transform duration-200 ${menuOpen ? "translate-y-[2.5px] rotate-45" : ""}`}
+                />
+                <span
+                  className={`h-px w-4 bg-current transition-transform duration-200 ${menuOpen ? "-translate-y-[2.5px] -rotate-45" : ""}`}
+                />
+              </span>
             </button>
           </div>
         </nav>

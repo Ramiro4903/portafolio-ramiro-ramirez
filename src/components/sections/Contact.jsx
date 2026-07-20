@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useLang } from "../../i18n/LanguageContext.jsx";
 import { profile, FORMSPREE_ID } from "../../data/profile.js";
 import { Reveal } from "../ui/Reveal.jsx";
-import { ImageReveal } from "../ui/ImageReveal.jsx";
 import { SectionLabel } from "../ui/SectionLabel.jsx";
 import { Pill } from "../ui/Pill.jsx";
 import { GithubIcon, LinkedinIcon, MailIcon, FileIcon } from "../ui/Icons.jsx";
@@ -84,20 +83,6 @@ export function Contact() {
                 {t("common.cv")}
               </Pill>
             </div>
-
-            {profile.photoHover && (
-              <ImageReveal
-                delay={0.1}
-                className="mt-10 hidden w-64 rounded-card border border-line sm:block"
-              >
-                <img
-                  src={profile.photoHover}
-                  alt={t("about.photoAlt")}
-                  loading="lazy"
-                  className="aspect-4/5 w-full object-cover grayscale transition-transform duration-700 hover:scale-[1.05]"
-                />
-              </ImageReveal>
-            )}
           </Reveal>
 
           <Reveal delay={0.16}>

@@ -132,30 +132,37 @@ export function Projects() {
   const reduceMotion = useReducedMotion();
   const containerRef = useRef(null);
   const [index, setIndex] = useState(0);
-  const [step, setStep] = useState(0);
+  const [dims, setDims] = useState({ cardW: 0, step: 0, offset: 0 });
   const x = useMotionValue(0);
   const slideCount = projects.length + 1;
 
-  // Ancho de tarjeta = contenedor - 4rem de peek; paso = ancho + gap
+  // La tarjeta activa queda centrada: ancho = contenedor - 2 peeks
+  // simétricos; el offset inicial deja el mismo aire a ambos lados.
   useEffect(() => {
     const measure = () => {
-      if (containerRef.current) setStep(containerRef.current.offsetWidth - 64 + 24);
+      if (!containerRef.current) return;
+      const width = containerRef.current.offsetWidth;
+      const peek = width >= 768 ? 96 : 24;
+      const gap = 24;
+      setDims({ cardW: width - peek * 2, step: width - peek * 2 + gap, offset: peek });
     };
     measure();
     window.addEventListener("resize", measure);
     return () => window.removeEventListener("resize", measure);
   }, []);
 
+  const positionFor = (i) => dims.offset - i * dims.step;
+
   const snapTo = (target) => {
     const clamped = Math.min(Math.max(target, 0), slideCount - 1);
     setIndex(clamped);
-    animate(x, -clamped * step, reduceMotion ? { duration: 0 } : { type: "spring", stiffness: 260, damping: 32 });
+    animate(x, positionFor(clamped), reduceMotion ? { duration: 0 } : { type: "spring", stiffness: 260, damping: 32 });
   };
 
   useEffect(() => {
     // Reposiciona al cambiar el ancho de la ventana
-    x.set(-index * step);
-  }, [step]); // eslint-disable-line react-hooks/exhaustive-deps
+    x.set(positionFor(index));
+  }, [dims]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleDragEnd = (_, info) => {
     if (info.offset.x < -60 || info.velocity.x < -400) snapTo(index + 1);
@@ -185,17 +192,24 @@ export function Projects() {
               className="flex cursor-grab gap-6 active:cursor-grabbing"
               style={{ x, touchAction: "pan-y" }}
               drag="x"
-              dragConstraints={{ left: -step * (slideCount - 1), right: 0 }}
+              dragConstraints={{
+                left: positionFor(slideCount - 1),
+                right: dims.offset,
+              }}
               dragElastic={0.08}
               dragMomentum={false}
               onDragEnd={handleDragEnd}
             >
               {projects.map((project) => (
-                <div key={project.id} className="w-[calc(100%-4rem)] flex-shrink-0">
+                <div
+                  key={project.id}
+                  className="flex-shrink-0"
+                  style={{ width: dims.cardW || "100%" }}
+                >
                   <ProjectCard project={project} />
                 </div>
               ))}
-              <div className="w-[calc(100%-4rem)] flex-shrink-0">
+              <div className="flex-shrink-0" style={{ width: dims.cardW || "100%" }}>
                 <ExtraCard />
               </div>
             </motion.div>

@@ -1,24 +1,6 @@
 // Categorías de habilidades. Los títulos traducidos viven en
 // src/i18n/{es,en}.json → skills.categories.<id>
 
-// Elementos de la banda marquee del inicio (neutrales al idioma).
-export const marqueeItems = [
-  "React",
-  "Node.js",
-  "JavaScript",
-  "Python",
-  "PHP",
-  "MySQL",
-  "PostgreSQL",
-  "MongoDB",
-  "Docker",
-  "Git",
-  "Linux",
-  "C / C++",
-  "REST APIs",
-  "HTML & CSS",
-];
-
 export const skillCategories = [
   {
     id: "languages",
