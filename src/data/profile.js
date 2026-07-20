@@ -30,7 +30,7 @@ export const profile = {
 // En spline.design: Export → Code → copia la URL que termina en
 // ".splinecode" y pégala aquí. Con null el hero se muestra sin 3D.
 // Ejemplo: "https://prod.spline.design/AbC123xyz/scene.splinecode"
-export const SPLINE_SCENE = "https://prod.spline.design/6Wq1Q7YGyM-iab9i/scene.splinecode"; // TEMP: prueba
+export const SPLINE_SCENE = "https://prod.spline.design/STbKL1nBtOH21O9h/scene.splinecode";
 
 // ID de Formspree para el formulario de contacto.
 // 1. Crea una cuenta gratis en https://formspree.io
