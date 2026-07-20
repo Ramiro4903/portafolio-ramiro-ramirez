@@ -112,7 +112,8 @@
       "I'm interested in every area of development, so I'm always looking to learn both backend and frontend. I really enjoy the process of solving a problem from scratch: thinking about how to organize the data and making sure the end user has a great experience using the app."
     ],
     "photoAlt": "Photo of Ramiro Ramírez Guzmán",
-    "photoPlaceholder": "// photo coming soon"
+    "photoPlaceholder": "// photo coming soon",
+    "photoCaption": "// ramiro.jpg — computer engineering · udeg"
   },
   "skills": {
     "label": "... /skills ...",

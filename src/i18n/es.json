@@ -112,7 +112,8 @@
       "Me interesa el desarrollo en todas sus áreas, por lo que siempre busco aprender de backend y de frontend. Disfruto mucho el proceso de resolver un problema desde cero: pensando en cómo organizar los datos, cuidando que el usuario final tenga una gran experiencia al usar la app."
     ],
     "photoAlt": "Fotografía de Ramiro Ramírez Guzmán",
-    "photoPlaceholder": "// foto próximamente"
+    "photoPlaceholder": "// foto próximamente",
+    "photoCaption": "// ramiro.jpg — ing. en computación · udeg"
   },
   "skills": {
     "label": "... /habilidades ...",

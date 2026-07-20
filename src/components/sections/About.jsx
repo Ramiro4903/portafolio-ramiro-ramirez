@@ -1,12 +1,36 @@
+import { useRef } from "react";
+import { motion, useScroll, useTransform, useReducedMotion } from "motion/react";
 import { useLang } from "../../i18n/LanguageContext.jsx";
 import { profile } from "../../data/profile.js";
 import { Reveal } from "../ui/Reveal.jsx";
 import { ImageReveal } from "../ui/ImageReveal.jsx";
 import { SectionLabel } from "../ui/SectionLabel.jsx";
 
+// Esquinas tipo visor de cámara sobre la foto
+function ViewfinderCorners() {
+  const base = "absolute h-5 w-5 border-paper/70 transition-all duration-300";
+  return (
+    <>
+      <span aria-hidden="true" className={`${base} top-3 left-3 border-t-2 border-l-2 group-hover:top-2 group-hover:left-2`} />
+      <span aria-hidden="true" className={`${base} top-3 right-3 border-t-2 border-r-2 group-hover:top-2 group-hover:right-2`} />
+      <span aria-hidden="true" className={`${base} bottom-3 left-3 border-b-2 border-l-2 group-hover:bottom-2 group-hover:left-2`} />
+      <span aria-hidden="true" className={`${base} bottom-3 right-3 border-b-2 border-r-2 group-hover:bottom-2 group-hover:right-2`} />
+    </>
+  );
+}
+
 export function About() {
   const { t } = useLang();
+  const reduceMotion = useReducedMotion();
   const paragraphs = t("about.paragraphs");
+
+  // Parallax sutil: la foto recorre ~50px más lento que el scroll
+  const photoRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: photoRef,
+    offset: ["start end", "end start"],
+  });
+  const parallaxY = useTransform(scrollYProgress, [0, 1], [26, -26]);
 
   return (
     <section id="about" className="scroll-mt-24 py-20 sm:py-28">
@@ -31,26 +55,40 @@ export function About() {
             ))}
           </div>
 
-          <div className="w-full max-w-sm lg:justify-self-end">
+          <motion.div
+            ref={photoRef}
+            style={{ y: reduceMotion ? 0 : parallaxY }}
+            className="group relative w-full max-w-sm lg:justify-self-end"
+          >
             {profile.photo ? (
-              <ImageReveal className="rounded-card border border-line">
-                <div className="group relative aspect-4/5 w-full overflow-hidden rounded-card">
-                  <img
-                    src={profile.photo}
-                    alt={t("about.photoAlt")}
-                    className="h-full w-full object-cover grayscale transition-transform duration-700 group-hover:scale-[1.05]"
-                  />
-                  {profile.photoHover && (
+              <>
+                {/* Marco desplazado: al hacer hover, marco y foto se
+                    deslizan uno hacia el otro hasta alinearse */}
+                <div
+                  aria-hidden="true"
+                  className="absolute inset-0 translate-x-4 translate-y-4 rounded-card border border-line transition-transform duration-500 ease-out group-hover:translate-x-2 group-hover:translate-y-2"
+                />
+                <ImageReveal className="relative rounded-card border border-line transition-transform duration-500 ease-out group-hover:translate-x-2 group-hover:translate-y-2">
+                  <div className="relative aspect-4/5 w-full overflow-hidden rounded-card">
                     <img
-                      src={profile.photoHover}
-                      alt=""
-                      aria-hidden="true"
-                      loading="lazy"
-                      className="absolute inset-0 h-full w-full object-cover opacity-0 grayscale transition-all duration-500 group-hover:scale-[1.05] group-hover:opacity-100"
+                      src={profile.photo}
+                      alt={t("about.photoAlt")}
+                      className="h-full w-full object-cover grayscale transition-transform duration-700 group-hover:scale-[1.05]"
                     />
-                  )}
-                </div>
-              </ImageReveal>
+                    {profile.photoHover && (
+                      <img
+                        src={profile.photoHover}
+                        alt=""
+                        aria-hidden="true"
+                        loading="lazy"
+                        className="absolute inset-0 h-full w-full object-cover opacity-0 grayscale transition-all duration-500 group-hover:scale-[1.05] group-hover:opacity-100"
+                      />
+                    )}
+                    <ViewfinderCorners />
+                  </div>
+                </ImageReveal>
+                <p className="mt-4 font-display text-xs text-fog">{t("about.photoCaption")}</p>
+              </>
             ) : (
               <div
                 role="img"
@@ -75,7 +113,7 @@ export function About() {
                 <p className="font-display text-xs text-fog">{t("about.photoPlaceholder")}</p>
               </div>
             )}
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
