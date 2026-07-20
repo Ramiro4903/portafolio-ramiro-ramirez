@@ -35,11 +35,11 @@ export function About() {
   return (
     <section id="about" className="scroll-mt-24 py-20 sm:py-28">
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
-        <div className="grid items-start gap-12 lg:grid-cols-[1.2fr_0.8fr]">
+        <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
           <div>
             <Reveal>
               <SectionLabel>{t("about.label")}</SectionLabel>
-              <h2 className="mt-6 max-w-xl text-2xl leading-snug font-medium sm:text-3xl">
+              <h2 className="mt-6 max-w-2xl text-3xl leading-snug font-medium sm:text-4xl">
                 {t("about.greetingStart")}
                 <em className="font-display font-bold text-paper not-italic">
                   {t("about.greetingHighlight")}
@@ -50,7 +50,7 @@ export function About() {
 
             {paragraphs.map((paragraph, i) => (
               <Reveal key={i} delay={0.08 + i * 0.08}>
-                <p className="mt-6 max-w-xl leading-relaxed text-fog">{paragraph}</p>
+                <p className="mt-6 max-w-2xl text-lg leading-relaxed text-fog">{paragraph}</p>
               </Reveal>
             ))}
           </div>
@@ -58,7 +58,7 @@ export function About() {
           <motion.div
             ref={photoRef}
             style={{ y: reduceMotion ? 0 : parallaxY }}
-            className="group relative w-full max-w-sm lg:justify-self-end"
+            className="group relative w-full max-w-md lg:justify-self-end"
           >
             {profile.photo ? (
               <>
