@@ -37,7 +37,7 @@ export const SPLINE_SCENE = "https://prod.spline.design/STbKL1nBtOH21O9h/scene.s
 // 2. Crea un formulario y copia su ID (p. ej. "mqkvazyw")
 // 3. Pégalo aquí. Mientras sea null, el formulario abre el cliente
 //    de correo del visitante como alternativa funcional.
-export const FORMSPREE_ID = null;
+export const FORMSPREE_ID = "xwvgbjrp";
 
 // Links de cada proyecto. null oculta el botón correspondiente.
 export const projectLinks = {
