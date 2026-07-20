@@ -1,15 +1,16 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import { useLang } from "../../i18n/LanguageContext.jsx";
 
 // Se muestra una sola vez por sesión (misma pestaña). Al cerrar y
 // reabrir el sitio vuelve a aparecer para un visitante nuevo.
 const SESSION_KEY = "ramiro-portfolio-intro-seen";
-const INITIALS = "rr"; // mismas iniciales del avatar y el favicon
-const TYPE_SPEED = 190; // ms por letra
+const TYPE_SPEED = 20; // ms por carácter
 
-// Pantalla de entrada: las iniciales "rr_" se escriben en el centro con
-// el cursor parpadeante y luego el fondo se desvanece revelando el sitio.
+// Pantalla de entrada: una ventana de terminal que teclea un comando y
+// su salida, luego una cortina sube para revelar el sitio.
 export function Preloader() {
+  const { t } = useLang();
   const reduceMotion = useReducedMotion();
 
   const [show, setShow] = useState(() => {
@@ -18,6 +19,14 @@ export function Preloader() {
   });
   const [typed, setTyped] = useState("");
   const [done, setDone] = useState(false);
+
+  const lines = [
+    "ramiro@portfolio:~$ npm run start",
+    `> ${t("loader.line1")}`,
+    `> ${t("loader.line2")}...`,
+    `✓ ${t("loader.line3")}`,
+  ];
+  const fullText = lines.join("\n");
 
   // Bloquea el scroll mientras la intro está visible
   useEffect(() => {
@@ -29,28 +38,27 @@ export function Preloader() {
     };
   }, [show]);
 
-  // Escribe las iniciales letra por letra (o al instante si se prefiere
-  // menos movimiento), luego marca el fin para desvanecer.
+  // Efecto de tecleo (o revelado instantáneo si se prefiere menos movimiento)
   useEffect(() => {
     if (!show) return undefined;
 
     if (reduceMotion) {
-      setTyped(INITIALS);
-      const hold = setTimeout(() => setDone(true), 750);
+      setTyped(fullText);
+      const hold = setTimeout(() => setDone(true), 700);
       return () => clearTimeout(hold);
     }
 
     let i = 0;
     const timer = setInterval(() => {
       i += 1;
-      setTyped(INITIALS.slice(0, i));
-      if (i >= INITIALS.length) {
+      setTyped(fullText.slice(0, i));
+      if (i >= fullText.length) {
         clearInterval(timer);
-        setTimeout(() => setDone(true), 700);
+        setTimeout(() => setDone(true), 380);
       }
     }, TYPE_SPEED);
     return () => clearInterval(timer);
-  }, [show, reduceMotion]);
+  }, [show, fullText, reduceMotion]);
 
   const finish = () => {
     sessionStorage.setItem(SESSION_KEY, "1");
@@ -61,27 +69,33 @@ export function Preloader() {
     <AnimatePresence>
       {show && (
         <motion.div
-          className="fixed inset-0 z-[200] flex items-center justify-center bg-ink"
-          initial={{ opacity: 1 }}
-          animate={{ opacity: done ? 0 : 1 }}
-          transition={{ duration: 0.6, ease: "easeInOut" }}
+          className="fixed inset-0 z-[200] flex items-center justify-center bg-ink px-6"
+          initial={{ y: 0 }}
+          animate={done ? { y: "-100%" } : { y: 0 }}
+          transition={{ duration: 0.7, ease: [0.76, 0, 0.24, 1] }}
           onAnimationComplete={() => done && finish()}
         >
-          <motion.div
-            className="flex items-end font-display text-8xl leading-none font-bold text-paper sm:text-9xl"
-            initial={reduceMotion ? false : { opacity: 0, y: 14 }}
-            animate={{
-              opacity: 1,
-              y: 0,
-              scale: done && !reduceMotion ? 1.12 : 1,
-            }}
-            transition={{ duration: done ? 0.6 : 0.4, ease: "easeOut" }}
-          >
-            <span>{typed}</span>
-            <span className="animate-blink" aria-hidden="true">
-              _
-            </span>
-          </motion.div>
+          {/* Ventana de terminal */}
+          <div className="w-full max-w-lg overflow-hidden rounded-xl border border-line bg-surface">
+            {/* Barra de título con los puntos y la ruta */}
+            <div className="flex items-center gap-3 border-b border-line px-4 py-3">
+              <div className="flex gap-1.5" aria-hidden="true">
+                <span className="h-3 w-3 rounded-full border border-fog/50" />
+                <span className="h-3 w-3 rounded-full border border-fog/50" />
+                <span className="h-3 w-3 rounded-full border border-fog/50" />
+              </div>
+              <p className="font-display text-xs text-fog">ramiro@portfolio — zsh</p>
+            </div>
+
+            {/* Cuerpo de la terminal */}
+            <pre className="px-5 py-5 font-display text-xs leading-relaxed text-fog sm:text-sm">
+              {typed}
+              <span
+                className="ml-0.5 inline-block h-3.5 w-2 translate-y-0.5 animate-blink bg-paper align-middle sm:h-4"
+                aria-hidden="true"
+              />
+            </pre>
+          </div>
         </motion.div>
       )}
     </AnimatePresence>

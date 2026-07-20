@@ -2,6 +2,11 @@
   "common": {
     "cv": "Ver CV"
   },
+  "loader": {
+    "line1": "iniciando portafolio",
+    "line2": "cargando proyectos",
+    "line3": "listo"
+  },
   "nav": {
     "links": [
       { "id": "projects", "label": "Proyectos" },
