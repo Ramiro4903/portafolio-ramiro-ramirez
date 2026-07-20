@@ -5,7 +5,7 @@ import { useLang } from "../../i18n/LanguageContext.jsx";
 // Se muestra una sola vez por sesión (misma pestaña). Al cerrar y
 // reabrir el sitio vuelve a aparecer para un visitante nuevo.
 const SESSION_KEY = "ramiro-portfolio-intro-seen";
-const TYPE_SPEED = 20; // ms por carácter
+const TYPE_SPEED = 11; // ms por carácter
 
 // Pantalla de entrada: una ventana de terminal que teclea un comando y
 // su salida, luego una cortina sube para revelar el sitio.
@@ -44,7 +44,7 @@ export function Preloader() {
 
     if (reduceMotion) {
       setTyped(fullText);
-      const hold = setTimeout(() => setDone(true), 700);
+      const hold = setTimeout(() => setDone(true), 450);
       return () => clearTimeout(hold);
     }
 
@@ -54,7 +54,7 @@ export function Preloader() {
       setTyped(fullText.slice(0, i));
       if (i >= fullText.length) {
         clearInterval(timer);
-        setTimeout(() => setDone(true), 380);
+        setTimeout(() => setDone(true), 240);
       }
     }, TYPE_SPEED);
     return () => clearInterval(timer);
@@ -72,7 +72,7 @@ export function Preloader() {
           className="fixed inset-0 z-[200] flex items-center justify-center bg-ink px-6"
           initial={{ y: 0 }}
           animate={done ? { y: "-100%" } : { y: 0 }}
-          transition={{ duration: 0.7, ease: [0.76, 0, 0.24, 1] }}
+          transition={{ duration: 0.55, ease: [0.76, 0, 0.24, 1] }}
           onAnimationComplete={() => done && finish()}
         >
           {/* Ventana de terminal */}
