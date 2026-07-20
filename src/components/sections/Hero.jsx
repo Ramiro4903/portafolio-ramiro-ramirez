@@ -4,6 +4,7 @@ import { profile } from "../../data/profile.js";
 import { Pill } from "../ui/Pill.jsx";
 import { SectionLabel } from "../ui/SectionLabel.jsx";
 import { GithubIcon, LinkedinIcon, MailIcon, ArrowIcon, FileIcon } from "../ui/Icons.jsx";
+import { HeroScene } from "../ui/HeroScene.jsx";
 
 export function Hero() {
   const { lang, t } = useLang();
@@ -27,7 +28,9 @@ export function Hero() {
         className="pointer-events-none absolute -top-20 -right-64 h-[40rem] w-[40rem] rounded-full border border-line/30"
       />
 
-      <div className="mx-auto max-w-6xl px-5 sm:px-8">
+      <HeroScene />
+
+      <div className="relative z-10 mx-auto max-w-6xl px-5 sm:px-8">
         <motion.div {...enter(0)}>
           <SectionLabel>{t("hero.kicker")}</SectionLabel>
         </motion.div>
