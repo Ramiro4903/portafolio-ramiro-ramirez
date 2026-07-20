@@ -3,7 +3,7 @@ import { useLang } from "../../i18n/LanguageContext.jsx";
 import { profile } from "../../data/profile.js";
 import { Pill } from "../ui/Pill.jsx";
 import { SectionLabel } from "../ui/SectionLabel.jsx";
-import { GithubIcon, LinkedinIcon, MailIcon, ArrowIcon, FileIcon } from "../ui/Icons.jsx";
+import { GithubIcon, LinkedinIcon, MailIcon, ArrowIcon, FileIcon, WhatsappIcon } from "../ui/Icons.jsx";
 import { HeroScene } from "../ui/HeroScene.jsx";
 
 export function Hero() {
@@ -82,6 +82,10 @@ export function Hero() {
           <Pill href={`mailto:${profile.email}`} className="text-xs">
             <MailIcon />
             Email
+          </Pill>
+          <Pill href={profile.whatsapp} target="_blank" rel="noopener noreferrer" className="text-xs">
+            <WhatsappIcon />
+            WhatsApp
           </Pill>
           <Pill href={profile.cv[lang]} target="_blank" rel="noopener noreferrer" className="text-xs">
             <FileIcon />

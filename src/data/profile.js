@@ -8,6 +8,8 @@ export const profile = {
   shortName: "Ramiro Ramírez",
   email: "ramiro.ramirez.guzman@gmail.com",
   phone: "+52 33 1015 7983",
+  // Enlace a WhatsApp: wa.me + código de país (52) y número sin espacios.
+  whatsapp: "https://wa.me/523310157983",
   github: "https://github.com/Ramiro4903",
   linkedin: "https://www.linkedin.com/in/ramiroramirezguzman/",
 

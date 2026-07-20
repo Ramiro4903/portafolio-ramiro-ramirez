@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { useLang } from "../../i18n/LanguageContext.jsx";
 import { profile } from "../../data/profile.js";
+import { ArrowIcon, GithubIcon, LinkedinIcon, WhatsappIcon } from "../ui/Icons.jsx";
 
 export function Navbar() {
   const { lang, setLang, t } = useLang();
@@ -112,61 +113,127 @@ export function Navbar() {
           <motion.nav
             key="menu-overlay"
             aria-label="menu"
-            initial={reduceMotion ? { opacity: 0 } : { opacity: 0, y: -24 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: -16 }}
-            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed inset-0 z-40 overflow-y-auto bg-ink"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25, ease: "easeOut" }}
+            className="fixed inset-0 z-40 overflow-y-auto bg-ink/95 backdrop-blur-xl"
           >
-            <div className="mx-auto grid min-h-full max-w-6xl items-center gap-10 px-5 pt-24 pb-10 sm:px-8 lg:grid-cols-[1fr_0.8fr]">
-              <ul>
-                {links.map((link, i) => (
-                  <li key={link.id}>
-                    <a
-                      href={`#${link.id}`}
-                      onClick={() => setMenuOpen(false)}
-                      onMouseEnter={() => setHovered(link.id)}
-                      onFocus={() => setHovered(link.id)}
-                      className="group flex items-baseline gap-5 py-3 sm:py-4"
-                    >
-                      <span className="font-display text-xs text-fog" aria-hidden="true">
-                        0{i + 1}
-                      </span>
-                      <span className="font-display text-4xl font-bold text-fog transition-colors duration-200 group-hover:text-paper group-focus-visible:text-paper sm:text-6xl">
-                        {link.label}
-                      </span>
-                    </a>
-                  </li>
-                ))}
-              </ul>
+            {/* Círculo decorativo que crece al abrir, para dar profundidad */}
+            <motion.div
+              aria-hidden="true"
+              initial={reduceMotion ? false : { scale: 0.6, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+              className="pointer-events-none absolute -top-40 -right-40 h-[36rem] w-[36rem] rounded-full border border-line/40"
+            />
 
-              <div className="relative hidden h-96 lg:block" aria-hidden="true">
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={hovered}
-                    initial={reduceMotion ? false : { opacity: 0, y: 14 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: -14 }}
-                    transition={{ duration: 0.22, ease: "easeOut" }}
-                    className="absolute inset-0 flex flex-col justify-center"
-                  >
-                    <p className="font-display text-[7rem] leading-none font-bold text-line select-none">
-                      0{hoveredIndex + 1}
-                    </p>
-                    {hovered === "about" ? (
-                      <img
-                        src={profile.photo}
-                        alt=""
-                        className="mt-6 aspect-4/5 w-52 rounded-card border border-line object-cover grayscale"
-                      />
-                    ) : (
-                      <p className="mt-6 max-w-sm font-display text-lg leading-relaxed text-fog">
-                        {previews[hovered]}
+            <div className="mx-auto flex min-h-full max-w-6xl flex-col px-5 pt-28 pb-10 sm:px-8">
+              <div className="grid flex-1 items-center gap-10 lg:grid-cols-[1fr_0.8fr]">
+                <ul>
+                  {links.map((link, i) => (
+                    <li key={link.id} className="overflow-hidden">
+                      <motion.a
+                        href={`#${link.id}`}
+                        onClick={() => setMenuOpen(false)}
+                        onMouseEnter={() => setHovered(link.id)}
+                        onFocus={() => setHovered(link.id)}
+                        initial={reduceMotion ? { opacity: 0 } : { y: "110%" }}
+                        animate={{ y: 0, opacity: 1 }}
+                        transition={{ delay: 0.08 + i * 0.07, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                        className="group flex items-center gap-4 py-2 sm:py-3"
+                      >
+                        <span
+                          className="w-7 font-display text-xs text-fog transition-colors duration-300 group-hover:text-paper"
+                          aria-hidden="true"
+                        >
+                          0{i + 1}
+                        </span>
+                        <span className="font-display text-4xl font-bold text-fog transition-all duration-300 group-hover:translate-x-3 group-hover:text-paper group-focus-visible:text-paper sm:text-6xl">
+                          {link.label}
+                        </span>
+                        <ArrowIcon
+                          className="text-paper opacity-0 transition-all duration-300 group-hover:translate-x-2 group-hover:opacity-100"
+                          width="28"
+                          height="28"
+                        />
+                      </motion.a>
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="relative hidden h-96 lg:block" aria-hidden="true">
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={hovered}
+                      initial={reduceMotion ? false : { opacity: 0, y: 14 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: -14 }}
+                      transition={{ duration: 0.22, ease: "easeOut" }}
+                      className="absolute inset-0 flex flex-col justify-center"
+                    >
+                      <p className="font-display text-[7rem] leading-none font-bold text-line select-none">
+                        0{hoveredIndex + 1}
                       </p>
-                    )}
-                  </motion.div>
-                </AnimatePresence>
+                      {hovered === "about" ? (
+                        <img
+                          src={profile.photo}
+                          alt=""
+                          className="mt-6 aspect-4/5 w-52 rounded-card border border-line object-cover grayscale"
+                        />
+                      ) : (
+                        <p className="mt-6 max-w-sm font-display text-lg leading-relaxed text-fog">
+                          {previews[hovered]}
+                        </p>
+                      )}
+                    </motion.div>
+                  </AnimatePresence>
+                </div>
               </div>
+
+              {/* Pie del menú: contacto directo y redes */}
+              <motion.div
+                initial={reduceMotion ? { opacity: 0 } : { opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.08 + links.length * 0.07, duration: 0.4 }}
+                className="mt-10 flex flex-wrap items-center justify-between gap-4 border-t border-line/60 pt-6"
+              >
+                <a
+                  href={`mailto:${profile.email}`}
+                  className="font-display text-sm text-fog transition-colors duration-200 hover:text-paper"
+                >
+                  {profile.email}
+                </a>
+                <div className="flex items-center gap-3">
+                  <a
+                    href={profile.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="GitHub"
+                    className="flex h-9 w-9 items-center justify-center rounded-full border border-line text-fog transition-colors duration-200 hover:border-paper hover:text-paper"
+                  >
+                    <GithubIcon />
+                  </a>
+                  <a
+                    href={profile.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="LinkedIn"
+                    className="flex h-9 w-9 items-center justify-center rounded-full border border-line text-fog transition-colors duration-200 hover:border-paper hover:text-paper"
+                  >
+                    <LinkedinIcon />
+                  </a>
+                  <a
+                    href={profile.whatsapp}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="WhatsApp"
+                    className="flex h-9 w-9 items-center justify-center rounded-full border border-line text-fog transition-colors duration-200 hover:border-paper hover:text-paper"
+                  >
+                    <WhatsappIcon />
+                  </a>
+                </div>
+              </motion.div>
             </div>
           </motion.nav>
         )}

@@ -4,7 +4,7 @@ import { profile, FORMSPREE_ID } from "../../data/profile.js";
 import { Reveal } from "../ui/Reveal.jsx";
 import { SectionLabel } from "../ui/SectionLabel.jsx";
 import { Pill } from "../ui/Pill.jsx";
-import { GithubIcon, LinkedinIcon, MailIcon, FileIcon } from "../ui/Icons.jsx";
+import { GithubIcon, LinkedinIcon, FileIcon, WhatsappIcon } from "../ui/Icons.jsx";
 
 const inputClasses =
   "w-full rounded-2xl border border-line bg-surface px-5 py-3.5 text-sm text-paper placeholder:text-fog/60 transition-colors duration-200 focus:border-paper focus:outline-none";
@@ -55,15 +55,32 @@ export function Contact() {
 
         <div className="mt-12 grid gap-12 lg:grid-cols-2">
           <Reveal delay={0.08}>
-            <p className="font-display text-xs tracking-widest text-fog uppercase">
-              {t("contact.directLabel")}
-            </p>
-            <a
-              href={`mailto:${profile.email}`}
-              className="mt-3 block font-display text-lg break-all text-paper underline decoration-line underline-offset-8 transition-colors duration-200 hover:decoration-paper sm:text-xl"
-            >
-              {profile.email}
-            </a>
+            <div>
+              <p className="font-display text-xs tracking-widest text-fog uppercase">
+                {t("contact.directLabel")}
+              </p>
+              <a
+                href={`mailto:${profile.email}`}
+                className="mt-3 block font-display text-lg break-all text-paper underline decoration-line underline-offset-8 transition-colors duration-200 hover:decoration-paper sm:text-xl"
+              >
+                {profile.email}
+              </a>
+            </div>
+
+            <div className="mt-8">
+              <p className="font-display text-xs tracking-widest text-fog uppercase">
+                {t("contact.whatsappLabel")}
+              </p>
+              <a
+                href={profile.whatsapp}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group mt-3 inline-flex items-center gap-3 font-display text-lg text-paper underline decoration-line underline-offset-8 transition-colors duration-200 hover:decoration-paper sm:text-xl"
+              >
+                <WhatsappIcon className="text-fog transition-colors duration-200 group-hover:text-paper" />
+                {profile.phone}
+              </a>
+            </div>
 
             <div className="mt-8 flex flex-wrap gap-3">
               <Pill href={profile.github} className="text-xs">
@@ -73,10 +90,6 @@ export function Contact() {
               <Pill href={profile.linkedin} className="text-xs">
                 <LinkedinIcon />
                 LinkedIn
-              </Pill>
-              <Pill href={`mailto:${profile.email}`} className="text-xs">
-                <MailIcon />
-                Email
               </Pill>
               <Pill href={profile.cv[lang]} target="_blank" rel="noopener noreferrer" className="text-xs">
                 <FileIcon />
