@@ -1,6 +1,7 @@
 import { useLang } from "../../i18n/LanguageContext.jsx";
 import { profile } from "../../data/profile.js";
 import { Reveal } from "../ui/Reveal.jsx";
+import { ImageReveal } from "../ui/ImageReveal.jsx";
 import { SectionLabel } from "../ui/SectionLabel.jsx";
 
 export function About() {
@@ -30,24 +31,26 @@ export function About() {
             ))}
           </div>
 
-          <Reveal delay={0.15} className="lg:justify-self-end">
+          <div className="w-full max-w-sm lg:justify-self-end">
             {profile.photo ? (
-              <div className="group relative aspect-4/5 w-full max-w-sm overflow-hidden rounded-card border border-line">
-                <img
-                  src={profile.photo}
-                  alt={t("about.photoAlt")}
-                  className="h-full w-full object-cover grayscale"
-                />
-                {profile.photoHover && (
+              <ImageReveal className="rounded-card border border-line">
+                <div className="group relative aspect-4/5 w-full overflow-hidden rounded-card">
                   <img
-                    src={profile.photoHover}
-                    alt=""
-                    aria-hidden="true"
-                    loading="lazy"
-                    className="absolute inset-0 h-full w-full object-cover opacity-0 grayscale transition-opacity duration-500 group-hover:opacity-100"
+                    src={profile.photo}
+                    alt={t("about.photoAlt")}
+                    className="h-full w-full object-cover grayscale transition-transform duration-700 group-hover:scale-[1.05]"
                   />
-                )}
-              </div>
+                  {profile.photoHover && (
+                    <img
+                      src={profile.photoHover}
+                      alt=""
+                      aria-hidden="true"
+                      loading="lazy"
+                      className="absolute inset-0 h-full w-full object-cover opacity-0 grayscale transition-all duration-500 group-hover:scale-[1.05] group-hover:opacity-100"
+                    />
+                  )}
+                </div>
+              </ImageReveal>
             ) : (
               <div
                 role="img"
@@ -72,7 +75,7 @@ export function About() {
                 <p className="font-display text-xs text-fog">{t("about.photoPlaceholder")}</p>
               </div>
             )}
-          </Reveal>
+          </div>
         </div>
       </div>
     </section>

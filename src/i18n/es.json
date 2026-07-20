@@ -13,7 +13,14 @@
     "skipLink": "Saltar al contenido",
     "openMenu": "Abrir menú",
     "closeMenu": "Cerrar menú",
-    "langToggle": "Cambiar idioma a inglés"
+    "langToggle": "Cambiar idioma a inglés",
+    "previews": {
+      "projects": "PiñataStore · Manuel Misael Fotografía",
+      "about": "Ingeniería en Computación — UdeG (CUCEI)",
+      "skills": "React / Node.js / Python / MySQL / Docker",
+      "journey": "CUCEI · graduación est. 2027",
+      "contact": "¿Construimos algo juntos?"
+    }
   },
   "hero": {
     "kicker": "... /portafolio ...",
@@ -36,6 +43,18 @@
     },
     "demo": "Ver demo",
     "code": "Ver código",
+    "carousel": {
+      "prev": "Proyecto anterior",
+      "next": "Proyecto siguiente",
+      "dragHint": "Arrastra para explorar"
+    },
+    "extra": {
+      "kicker": "03 / ¿El siguiente?",
+      "title": "Tu proyecto aquí",
+      "text": "Estoy en búsqueda constante de proyectos para seguir aprendiendo y construyendo. Si tienes una idea o una oportunidad, me encantaría escucharla.",
+      "cta": "Hablemos",
+      "github": "Ver mi GitHub"
+    },
     "items": {
       "pinatastore": {
         "name": "PiñataStore",

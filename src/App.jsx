@@ -1,4 +1,5 @@
 import { Cursor } from "./components/ui/Cursor.jsx";
+import { Marquee } from "./components/ui/Marquee.jsx";
 import { Navbar } from "./components/layout/Navbar.jsx";
 import { Footer } from "./components/layout/Footer.jsx";
 import { Hero } from "./components/sections/Hero.jsx";
@@ -16,6 +17,7 @@ export default function App() {
       <Navbar />
       <main id="main">
         <Hero />
+        <Marquee />
         <Projects />
         <About />
         <Skills />

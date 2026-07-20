@@ -1,6 +1,8 @@
+import { useEffect, useRef, useState } from "react";
+import { animate, motion, useMotionValue, useReducedMotion } from "motion/react";
 import { useLang } from "../../i18n/LanguageContext.jsx";
 import { projects } from "../../data/projects.js";
-import { projectLinks } from "../../data/profile.js";
+import { profile, projectLinks } from "../../data/profile.js";
 import { Reveal } from "../ui/Reveal.jsx";
 import { SectionLabel } from "../ui/SectionLabel.jsx";
 import { TechList } from "../ui/TechList.jsx";
@@ -20,7 +22,7 @@ function ProjectCard({ project }) {
   ];
 
   return (
-    <article className="group rounded-card border border-line bg-surface p-6 transition-colors duration-300 hover:border-fog/60 sm:p-10">
+    <article className="h-full rounded-card border border-line bg-surface p-6 transition-colors duration-300 hover:border-fog/60 sm:p-10">
       <header className="flex flex-wrap items-start justify-between gap-4">
         <div>
           <p className="font-display text-sm text-fog">
@@ -91,11 +93,81 @@ function ProjectCard({ project }) {
   );
 }
 
-export function Projects() {
+// Tarjeta final del carrusel: invitación a colaborar
+function ExtraCard() {
   const { t } = useLang();
+  const extra = t("projects.extra");
 
   return (
-    <section id="projects" className="scroll-mt-24 py-20 sm:py-28">
+    <article className="flex h-full flex-col justify-between rounded-card border border-dashed border-line bg-surface/50 p-6 transition-colors duration-300 hover:border-fog/60 sm:p-10">
+      <div>
+        <p className="font-display text-sm text-fog">{extra.kicker}</p>
+        <h3 className="mt-2 font-display text-2xl font-bold text-paper sm:text-4xl">
+          {extra.title}
+          <span className="animate-blink" aria-hidden="true">
+            _
+          </span>
+        </h3>
+        <p className="mt-6 max-w-md leading-relaxed text-fog">{extra.text}</p>
+      </div>
+      <div className="mt-10 flex flex-wrap gap-3">
+        <Pill href="#contact" variant="solid">
+          {extra.cta}
+          <ArrowIcon />
+        </Pill>
+        <Pill href={profile.github}>
+          <GithubIcon />
+          {extra.github}
+        </Pill>
+      </div>
+    </article>
+  );
+}
+
+// Carrusel horizontal arrastrable, inspirado en la referencia: las
+// tarjetas se mueven con drag o con las flechas, con un peek de la
+// siguiente tarjeta como invitación a explorar.
+export function Projects() {
+  const { t } = useLang();
+  const reduceMotion = useReducedMotion();
+  const containerRef = useRef(null);
+  const [index, setIndex] = useState(0);
+  const [step, setStep] = useState(0);
+  const x = useMotionValue(0);
+  const slideCount = projects.length + 1;
+
+  // Ancho de tarjeta = contenedor - 4rem de peek; paso = ancho + gap
+  useEffect(() => {
+    const measure = () => {
+      if (containerRef.current) setStep(containerRef.current.offsetWidth - 64 + 24);
+    };
+    measure();
+    window.addEventListener("resize", measure);
+    return () => window.removeEventListener("resize", measure);
+  }, []);
+
+  const snapTo = (target) => {
+    const clamped = Math.min(Math.max(target, 0), slideCount - 1);
+    setIndex(clamped);
+    animate(x, -clamped * step, reduceMotion ? { duration: 0 } : { type: "spring", stiffness: 260, damping: 32 });
+  };
+
+  useEffect(() => {
+    // Reposiciona al cambiar el ancho de la ventana
+    x.set(-index * step);
+  }, [step]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  const handleDragEnd = (_, info) => {
+    if (info.offset.x < -60 || info.velocity.x < -400) snapTo(index + 1);
+    else if (info.offset.x > 60 || info.velocity.x > 400) snapTo(index - 1);
+    else snapTo(index);
+  };
+
+  const arrowClasses =
+    "flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border border-line text-paper transition-all duration-200 hover:border-paper hover:bg-paper hover:text-ink disabled:pointer-events-none disabled:opacity-30";
+
+  return (
+    <section id="projects" className="scroll-mt-24 overflow-x-clip py-20 sm:py-28">
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <Reveal>
           <SectionLabel>{t("projects.label")}</SectionLabel>
@@ -107,13 +179,55 @@ export function Projects() {
           </div>
         </Reveal>
 
-        <div className="mt-12 space-y-8">
-          {projects.map((project, i) => (
-            <Reveal key={project.id} delay={i * 0.08}>
-              <ProjectCard project={project} />
-            </Reveal>
-          ))}
-        </div>
+        <Reveal delay={0.1}>
+          <div ref={containerRef} className="mt-12">
+            <motion.div
+              className="flex cursor-grab gap-6 active:cursor-grabbing"
+              style={{ x, touchAction: "pan-y" }}
+              drag="x"
+              dragConstraints={{ left: -step * (slideCount - 1), right: 0 }}
+              dragElastic={0.08}
+              dragMomentum={false}
+              onDragEnd={handleDragEnd}
+            >
+              {projects.map((project) => (
+                <div key={project.id} className="w-[calc(100%-4rem)] flex-shrink-0">
+                  <ProjectCard project={project} />
+                </div>
+              ))}
+              <div className="w-[calc(100%-4rem)] flex-shrink-0">
+                <ExtraCard />
+              </div>
+            </motion.div>
+          </div>
+
+          <div className="mt-8 flex items-center justify-between">
+            <p className="font-display text-xs tracking-widest text-fog">
+              0{index + 1} <span aria-hidden="true">/</span> 0{slideCount}
+              <span className="ml-4 hidden text-fog/60 sm:inline">
+                — {t("projects.carousel.dragHint")}
+              </span>
+            </p>
+            <div className="flex gap-3">
+              <button
+                onClick={() => snapTo(index - 1)}
+                disabled={index === 0}
+                aria-label={t("projects.carousel.prev")}
+                className={arrowClasses}
+              >
+                <ArrowIcon style={{ transform: "rotate(180deg)" }} />
+              </button>
+              <button
+                onClick={() => snapTo(index + 1)}
+                disabled={index === slideCount - 1}
+                aria-label={t("projects.carousel.next")}
+                className={arrowClasses}
+              >
+                <ArrowIcon />
+              </button>
+            </div>
+          </div>
+        </Reveal>
       </div>
     </section>
   );
