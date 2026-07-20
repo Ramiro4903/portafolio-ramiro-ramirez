@@ -1,3 +1,4 @@
+import { Preloader } from "./components/ui/Preloader.jsx";
 import { Cursor } from "./components/ui/Cursor.jsx";
 import { Marquee } from "./components/ui/Marquee.jsx";
 import { Navbar } from "./components/layout/Navbar.jsx";
@@ -13,6 +14,7 @@ import { Contact } from "./components/sections/Contact.jsx";
 export default function App() {
   return (
     <div id="top">
+      <Preloader />
       <Cursor />
       <Navbar />
       <main id="main">
