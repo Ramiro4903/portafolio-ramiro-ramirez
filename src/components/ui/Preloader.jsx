@@ -1,16 +1,15 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
-import { useLang } from "../../i18n/LanguageContext.jsx";
 
 // Se muestra una sola vez por sesión (misma pestaña). Al cerrar y
 // reabrir el sitio vuelve a aparecer para un visitante nuevo.
 const SESSION_KEY = "ramiro-portfolio-intro-seen";
-const TYPE_SPEED = 26; // ms por carácter
+const INITIALS = "rr"; // mismas iniciales del avatar y el favicon
+const TYPE_SPEED = 190; // ms por letra
 
-// Pantalla de entrada estilo terminal: escribe unas líneas de consola
-// y luego una cortina sube para revelar el sitio.
+// Pantalla de entrada: las iniciales "rr_" se escriben en el centro con
+// el cursor parpadeante y luego el fondo se desvanece revelando el sitio.
 export function Preloader() {
-  const { t } = useLang();
   const reduceMotion = useReducedMotion();
 
   const [show, setShow] = useState(() => {
@@ -19,13 +18,6 @@ export function Preloader() {
   });
   const [typed, setTyped] = useState("");
   const [done, setDone] = useState(false);
-
-  const lines = [
-    `> ${t("loader.line1")}`,
-    `> ${t("loader.line2")}...`,
-    `✓ ${t("loader.line3")}`,
-  ];
-  const fullText = lines.join("\n");
 
   // Bloquea el scroll mientras la intro está visible
   useEffect(() => {
@@ -37,27 +29,28 @@ export function Preloader() {
     };
   }, [show]);
 
-  // Efecto de tecleo (o revelado instantáneo si se prefiere menos movimiento)
+  // Escribe las iniciales letra por letra (o al instante si se prefiere
+  // menos movimiento), luego marca el fin para desvanecer.
   useEffect(() => {
     if (!show) return undefined;
 
     if (reduceMotion) {
-      setTyped(fullText);
-      const hold = setTimeout(() => setDone(true), 650);
+      setTyped(INITIALS);
+      const hold = setTimeout(() => setDone(true), 750);
       return () => clearTimeout(hold);
     }
 
     let i = 0;
     const timer = setInterval(() => {
       i += 1;
-      setTyped(fullText.slice(0, i));
-      if (i >= fullText.length) {
+      setTyped(INITIALS.slice(0, i));
+      if (i >= INITIALS.length) {
         clearInterval(timer);
-        setTimeout(() => setDone(true), 420);
+        setTimeout(() => setDone(true), 700);
       }
     }, TYPE_SPEED);
     return () => clearInterval(timer);
-  }, [show, fullText, reduceMotion]);
+  }, [show, reduceMotion]);
 
   const finish = () => {
     sessionStorage.setItem(SESSION_KEY, "1");
@@ -68,24 +61,27 @@ export function Preloader() {
     <AnimatePresence>
       {show && (
         <motion.div
-          className="fixed inset-0 z-[200] flex items-center justify-center bg-ink px-6"
+          className="fixed inset-0 z-[200] flex items-center justify-center bg-ink"
           initial={{ opacity: 1 }}
-          animate={done ? { y: "-100%" } : { y: 0 }}
-          transition={{ duration: 0.7, ease: [0.76, 0, 0.24, 1] }}
+          animate={{ opacity: done ? 0 : 1 }}
+          transition={{ duration: 0.6, ease: "easeInOut" }}
           onAnimationComplete={() => done && finish()}
         >
-          {/* Círculo decorativo, mismo lenguaje que el hero */}
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute -top-32 -right-32 h-96 w-96 rounded-full border border-line/40"
-          />
-
-          <pre className="font-display text-sm leading-loose text-fog sm:text-base">
-            {typed}
-            <span className="animate-blink text-paper" aria-hidden="true">
+          <motion.div
+            className="flex items-end font-display text-8xl leading-none font-bold text-paper sm:text-9xl"
+            initial={reduceMotion ? false : { opacity: 0, y: 14 }}
+            animate={{
+              opacity: 1,
+              y: 0,
+              scale: done && !reduceMotion ? 1.12 : 1,
+            }}
+            transition={{ duration: done ? 0.6 : 0.4, ease: "easeOut" }}
+          >
+            <span>{typed}</span>
+            <span className="animate-blink" aria-hidden="true">
               _
             </span>
-          </pre>
+          </motion.div>
         </motion.div>
       )}
     </AnimatePresence>

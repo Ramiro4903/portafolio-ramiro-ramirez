@@ -2,11 +2,6 @@
   "common": {
     "cv": "View CV"
   },
-  "loader": {
-    "line1": "booting portfolio",
-    "line2": "loading projects",
-    "line3": "ready"
-  },
   "nav": {
     "links": [
       { "id": "projects", "label": "Projects" },
